@@ -59,14 +59,20 @@ if (args.includes('--schema-only')) {
 
     const documentValidationPromises = Object.keys(service.documents).map(async type => {
       const document = service.documents[type];
-      const { fetch: location } = document;
 
       try {
-        const content = await fetch(location);
+        await new Promise((resolve, reject) => setTimeout(resolve, Math.random() * 30000));
+        console.error('😈 Fetch 1 of', serviceId, type);
+        const content = await fetch(document.fetch);
+        console.error('🤢 Fetch 1 DONE of', serviceId, type);
+
         const filteredContent = await filter(content, document, service.filters);
         expect(filteredContent.length, 'The textual content after filtering was unexpectedly small.').to.be.greaterThan(MIN_DOC_LENGTH);
 
-        const secondContent = await fetch(location);
+        await new Promise((resolve, reject) => setTimeout(resolve, Math.random() * 30000));
+        console.error('👹 Fetch 2 of', serviceId, type);
+        const secondContent = await fetch(document.fetch);
+        console.error('🎃 Fetch 2 DONE of', serviceId, type);
         const secondFilteredContent = await filter(secondContent, document, service.filters);
         expect(secondFilteredContent, 'Filters give inconsistent results.').to.equal(filteredContent);
       } catch (failure) {
