@@ -18,10 +18,10 @@ export default class Recorder {
     this.git = new Git(this.path);
   }
 
-  async record({ serviceId, documentType, content, changelog, mimeType }) {
+  async record({ serviceId, documentDate, documentType, content, changelog, mimeType }) {
     const fileExtension = mime.getExtension(mimeType);
     const filePath = await this.save({ serviceId, documentType, content, fileExtension });
-    const sha = await this.commit(filePath, changelog);
+    const sha = await this.commit(filePath, changelog, documentDate);
 
     return {
       path: filePath,
@@ -43,10 +43,11 @@ export default class Recorder {
     return filePath;
   }
 
-  async commit(filePath, message) {
+  async commit(filePath, message, authorDate) {
     try {
       await this.git.add(filePath);
-      return await this.git.commit(filePath, message);
+      console.log('commit', authorDate);
+      return await this.git.commit(filePath, message, authorDate);
     } catch (error) {
       throw new Error(`Could not commit ${filePath} with message "${message}" due to error: "${error}"`);
     }
@@ -86,6 +87,28 @@ export default class Recorder {
   async isTracked(serviceId, documentType) {
     const filePath = this.getPathFor(serviceId, documentType, '*');
     return this.git.isTracked(filePath);
+  }
+
+  async getRecord(snapshotId) {
+    await this.git.checkout(snapshotId);
+    const [ commit ] = await this.git.log([ '-n', '1', '--stat=4096', snapshotId ]);
+    const [ diffChanges ] = commit.diff.files;
+
+    const relativeFilePath = diffChanges.file;
+    const recordFilePath = `${this.path}/${relativeFilePath}`;
+    const mimeType = mime.getType(recordFilePath);
+
+    const readFileOptions = {};
+    if (mimeType.startsWith('text/')) {
+      readFileOptions.encoding = 'utf8';
+    }
+
+    return {
+      id: commit.hash,
+      date: commit.date,
+      content: await fs.readFile(recordFilePath, readFileOptions),
+      mimeType,
+    };
   }
 }
 

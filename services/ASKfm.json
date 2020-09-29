@@ -2,12 +2,27 @@
   "name": "ASKfm",
   "documents": {
     "Terms of Service": {
-      "fetch": "https://ask.fm/docs/terms_of_use/?lang=en",
-      "select": "section.container"
-    },
-    "Privacy Policy": {
-      "fetch": "https://ask.fm/docs/privacy_policy/?lang=en",
-      "select": "section.container"
+      "2020-09-28T14:02:39Z": {
+        "fetch": "https://ask.fm/docs/terms_of_use/?lang=en",
+        "select": "body",
+        "filter": [
+          "add"
+        ]
+      },
+      "2020-08-24T14:02:39Z": {
+        "fetch": "https://ask.fm/docs/terms_of_use/?lang=en",
+        "select": "h1",
+        "filter": [
+          "add"
+        ]
+      },
+      "2020-08-23T14:02:39Z": {
+        "fetch": "https://ask.fm/docs/terms_of_use/?lang=en",
+        "select": "h1",
+        "filter": [
+          "add"
+        ]
+      }
     }
   }
 }

@@ -19,8 +19,12 @@ export default class Git {
     return this.git.add(this.relativePath(filepath));
   }
 
-  async commit(filepath, message) {
-    const summary = await this.git.commit(message, this.relativePath(filepath), { '--author': `${config.get('history.author').name} <${config.get('history.author').email}>` });
+  async commit(filepath, message, date) {
+    console.log('git.commit', date);
+    const summary = await this.git.commit(message, this.relativePath(filepath), {
+      '--author': `${config.get('history.author').name} <${config.get('history.author').email}>`,
+      '--date': date.toISOString()
+    });
     return summary.commit.replace('HEAD ', '').replace('(root-commit) ', '');
   }
 
@@ -64,6 +68,14 @@ export default class Git {
       commit: latestCommit,
       filePath: filePaths[0],
     };
+  }
+
+  async checkout(options) {
+    return this.git.checkout(options);
+  }
+
+  async show(options) {
+    return this.git.show(options);
   }
 
   relativePath(absolutePath) {

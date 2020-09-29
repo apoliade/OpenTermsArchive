@@ -14,6 +14,9 @@ let serviceIds = args.filter(arg => !arg.startsWith('--'));
   app.attach(logger);
   await app.init();
 
+
+  await app.rewriteVersion();
+  return;
   serviceIds = serviceIds.filter(serviceId => {
     const isServiceDeclared = app.serviceDeclarations[serviceId];
     if (!isServiceDeclared) {

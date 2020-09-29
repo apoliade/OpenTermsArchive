@@ -166,13 +166,13 @@ export default class CGUs extends events.EventEmitter {
     return snapshotId;
   }
 
-  async recordVersion({ snapshotContent, mimeType, snapshotId, serviceId, documentDeclaration, isRefiltering }) {
+  async recordVersion({ snapshotContent, snapshotDate, mimeType, snapshotId, serviceId, documentDeclaration, filterFunctions, isRefiltering }) {
     const { type } = documentDeclaration;
     const document = await filter({
       content: snapshotContent,
       mimeType,
       documentDeclaration,
-      filterFunctions: this._serviceDeclarations[serviceId].filters,
+      filterFunctions,
     });
 
     const recordFunction = !isRefiltering ? 'recordVersion' : 'recordRefilter';
@@ -180,6 +180,7 @@ export default class CGUs extends events.EventEmitter {
     const { id: versionId, isFirstRecord } = await history[recordFunction]({
       serviceId,
       content: document,
+      snapshotDate,
       documentType: type,
       snapshotId
     });
@@ -189,6 +190,42 @@ export default class CGUs extends events.EventEmitter {
     }
 
     this.emit(isFirstRecord ? 'firstVersionRecorded' : 'versionRecorded', serviceId, type, versionId);
+  }
+
+  async rewriteVersion() {
+    const snapshotId = '31fde9a45cff00464305c97eefe1dd39b78eb24c';
+    const { date: dateString, content, mimeType } = await history.getSnapshot(snapshotId);
+    // getService et nom de fichier
+    const date = new Date(dateString);
+    const serviceDeclarationTOS = this.serviceDeclarations.ASKfm.documents['Terms of Service'];
+    const availableDates = Object.keys(serviceDeclarationTOS);
+    const applicableDates = availableDates.map(availableDate => new Date(availableDate));
+    const applicableDate = applicableDates.sort((a, b) => b - a)
+      .find(availableDate => availableDate <= date);
+
+    const documentDeclaration = this.serviceDeclarations.ASKfm.documents['Terms of Service'][applicableDate.toISOString()];
+
+    const filters = Object.keys(this.serviceDeclarations.ASKfm.filters).reduce((acc, filterName) => {
+      const availableFiltersDates = Object.keys(this.serviceDeclarations.ASKfm.filters[filterName]);
+      const applicableFiltersDates = availableFiltersDates.map(availableDate => new Date(availableDate));
+      const applicableFilterDate = applicableFiltersDates.sort((a, b) => b - a)
+        .find(availableDate => availableDate <= date);
+      acc[filterName] = this._serviceDeclarations.ASKfm.filters[filterName][applicableFilterDate.toISOString()];
+      return acc;
+    }, {});
+
+    return this.recordVersion({
+      snapshotContent: content,
+      mimeType,
+      snapshotId,
+      serviceId: 'ASKfm',
+      filterFunctions: filters,
+      documentDeclaration: {
+        type: 'Terms of Service',
+        ...documentDeclaration
+      },
+      snapshotDate: date,
+    });
   }
 
   async publish() {
