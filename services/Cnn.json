@@ -1,0 +1,10 @@
+{
+  "name": "Cnn",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/cnn.com.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "https://edition.cnn.com/terms",
+      "select": "body"
+    }
+  }
+}

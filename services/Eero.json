@@ -1,0 +1,10 @@
+{
+  "name": "Eero",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/eero.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "https://eero.com/legal/privacy",
+      "select": "#main > section > div:nth-of-type(2) > div > div > div:nth-of-type(3) > section"
+    }
+  }
+}

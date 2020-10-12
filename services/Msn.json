@@ -1,0 +1,14 @@
+{
+  "name": "Msn",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/msn.com.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "https://www.microsoft.com/en-us/servicesagreement/",
+      "select": "div.row-fluid.grid-container.mscom-grid-container"
+    },
+    "Privacy Policy": {
+      "fetch": "https://privacy.microsoft.com/en-us/PrivacyStatement",
+      "select": "div[style=\"background-color:white\"]"
+    }
+  }
+}

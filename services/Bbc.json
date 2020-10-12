@@ -1,0 +1,14 @@
+{
+  "name": "Bbc",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/bbc.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://www.bbc.com/usingthebbc/privacy-policy/",
+      "select": "div.gel-wrap"
+    },
+    "Terms of Service": {
+      "fetch": "http://www.bbc.com/usingthebbc/terms-of-use/",
+      "select": "div.gel-wrap"
+    }
+  }
+}

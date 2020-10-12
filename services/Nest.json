@@ -1,0 +1,14 @@
+{
+  "name": "Nest",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/nest.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "https://nest.com/legal/privacy-statement-for-nest-products-and-services/",
+      "select": "#main > div > section:nth-of-type(2) > article"
+    },
+    "Terms of Service": {
+      "fetch": "https://nest.com/legal/terms-of-service/",
+      "select": "#main > div > section:nth-of-type(2) > article"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Ui",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/ui.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "https://www.ui.com/legal/privacypolicy/",
+      "select": "html > body > div:first-of-type > div:nth-of-type(2) > div > div:nth-of-type(2)"
+    },
+    "Terms of Service": {
+      "fetch": "https://www.ui.com/legal/unifi/termsofservice/",
+      "select": "html > body > div:first-of-type > div:nth-of-type(2) > div > div"
+    }
+  }
+}

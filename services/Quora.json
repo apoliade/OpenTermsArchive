@@ -1,0 +1,14 @@
+{
+  "name": "Quora",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/quora.com.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "https://www.quora.com/about/tos",
+      "select": "div.StaticPageWrapper"
+    },
+    "Privacy Policy": {
+      "fetch": "https://www.quora.com/about/privacy",
+      "select": "div.StaticPageWrapper"
+    }
+  }
+}

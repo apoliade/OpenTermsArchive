@@ -1,0 +1,14 @@
+{
+  "name": "Twitter",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/twitter.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "https://twitter.com/en/privacy",
+      "select": "main"
+    },
+    "Terms of Service": {
+      "fetch": "https://twitter.com/en/tos",
+      "select": "main"
+    }
+  }
+}

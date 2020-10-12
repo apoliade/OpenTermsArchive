@@ -1,0 +1,10 @@
+{
+  "name": "XfinityWebServices",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/xfinity.com.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "http://my.xfinity.com/terms/web/",
+      "select": "div#legal"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Xanga",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/xanga.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://help.xanga.com/about/legal/privacy-policy/",
+      "select": "body"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Netflix",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/netflix.com.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "https://help.netflix.com/legal/termsofuse",
+      "select": "section.kb-article.kb-article-variant.gradient"
+    },
+    "Privacy Policy": {
+      "fetch": "https://help.netflix.com/en/legal/privacy",
+      "select": "section.kb-article.kb-article-variant.gradient"
+    }
+  }
+}

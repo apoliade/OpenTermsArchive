@@ -1,0 +1,14 @@
+{
+  "name": "Arlo",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/arlo.com.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "https://www.arlo.com/en-us/about/terms-and-conditions/default.aspx",
+      "select": "#about > section > div > div:nth-of-type(2) > article"
+    },
+    "Privacy Policy": {
+      "fetch": "https://www.arlo.com/eu/about/privacy-policy/",
+      "select": "#about > section > div > div > article"
+    }
+  }
+}

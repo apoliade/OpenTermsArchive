@@ -1,0 +1,14 @@
+{
+  "name": "Grammarly",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/grammarly.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "https://www.grammarly.com/privacy-policy",
+      "select": "div#page"
+    },
+    "Terms of Service": {
+      "fetch": "https://www.grammarly.com/terms",
+      "select": "div#page"
+    }
+  }
+}

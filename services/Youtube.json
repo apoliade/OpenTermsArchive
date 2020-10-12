@@ -1,0 +1,14 @@
+{
+  "name": "Youtube",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/youtube.com.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "https://www.youtube.com/t/terms",
+      "select": "div#article-container"
+    },
+    "Privacy Policy": {
+      "fetch": "https://policies.google.com/privacy",
+      "select": "div[role=\"article\"]"
+    }
+  }
+}

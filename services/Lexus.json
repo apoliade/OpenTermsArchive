@@ -1,0 +1,10 @@
+{
+  "name": "Lexus",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/lexus.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://www.lexus.com/privacy/",
+      "select": "body"
+    }
+  }
+}

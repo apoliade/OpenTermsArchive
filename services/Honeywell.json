@@ -1,0 +1,14 @@
+{
+  "name": "Honeywell",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/honeywell.com.xml",
+  "documents": {
+    "Vulnerability Disclosure Policy": {
+      "fetch": "https://www.honeywell.com/en-us/product-security",
+      "select": "#left-rail-tabs-content"
+    },
+    "Privacy Policy": {
+      "fetch": "https://www.honeywell.com/en-us/privacy-statement",
+      "select": "#left-rail-tabs-content"
+    }
+  }
+}

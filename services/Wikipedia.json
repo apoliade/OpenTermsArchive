@@ -1,0 +1,14 @@
+{
+  "name": "Wikipedia",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/wikipedia.org.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "https://wikimediafoundation.org/wiki/Terms_of_Use",
+      "select": "#mw-content-text"
+    },
+    "Privacy Policy": {
+      "fetch": "https://wikimediafoundation.org/wiki/Privacy_policy",
+      "select": "#mw-content-text"
+    }
+  }
+}

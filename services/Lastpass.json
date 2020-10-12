@@ -1,0 +1,14 @@
+{
+  "name": "Lastpass",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/lastpass.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "https://www.logmeininc.com/legal/privacy",
+      "select": "div.text-block"
+    },
+    "Terms of Service": {
+      "fetch": "https://www.logmeininc.com/legal/terms-and-conditions",
+      "select": "div.text-block"
+    }
+  }
+}

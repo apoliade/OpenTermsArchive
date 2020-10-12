@@ -1,0 +1,10 @@
+{
+  "name": "Mlb",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/mlb.mlb.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://mlb.mlb.com/mlb/official_info/about_mlb_com/privacy_policy.jsp",
+      "select": "body"
+    }
+  }
+}

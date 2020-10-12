@@ -1,0 +1,14 @@
+{
+  "name": "Yahoo",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/yahoo.fr.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://info.yahoo.com/privacy/fr/yahoo/",
+      "select": "body"
+    },
+    "Terms of Service": {
+      "fetch": "https://policies.oath.com/us/en/oath/terms/otos/index.html",
+      "select": "main#site-main"
+    }
+  }
+}

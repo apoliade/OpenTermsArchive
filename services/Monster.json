@@ -1,0 +1,14 @@
+{
+  "name": "Monster",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/monster.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://inside.monster.com/policy/inside2.aspx",
+      "select": "div.pageContainerDefault765"
+    },
+    "Terms of Service": {
+      "fetch": "http://inside.monster.com/terms-of-use",
+      "select": "div#ac_rightpanel"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Kidshealth",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/kidshealth.org.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "http://kidshealth.org/parent/kh_misc/policy.html",
+      "select": "div#khcontent_article"
+    }
+  }
+}

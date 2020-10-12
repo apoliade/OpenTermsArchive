@@ -1,0 +1,10 @@
+{
+  "name": "Seenthis",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/seenthis.net.xml",
+  "documents": {
+    "Copyright Claims Policy": {
+      "fetch": "http://seenthis.net/fran%C3%A7ais/mentions/article/propri%C3%A9t%C3%A9-intellectuelle",
+      "select": "div#texte_article"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Nabble",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/nabble.com.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "http://www.nabble.com/Terms.jtp",
+      "select": "div.terms"
+    },
+    "Privacy Policy": {
+      "fetch": "http://www.nabble.com/PrivacyPolicy.jtp",
+      "select": "div.terms"
+    }
+  }
+}

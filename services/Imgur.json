@@ -1,0 +1,10 @@
+{
+  "name": "Imgur",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/imgur.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://imgur.com/privacy",
+      "select": "div.text-content.privacy"
+    }
+  }
+}

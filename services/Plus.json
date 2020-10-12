@@ -1,0 +1,10 @@
+{
+  "name": "Plus",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/plus.google.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "https://policies.google.com/privacy",
+      "select": "div[role=\"article\"]"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Sonic",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/sonic.com.xml",
+  "documents": {
+    "Terms of Service": {
+      "fetch": "https://help.sonic.com/hc/en-us/articles/235963988-Sonic-net-Policies",
+      "select": "div.article-body"
+    }
+  }
+}

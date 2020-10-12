@@ -1,0 +1,10 @@
+{
+  "name": "Nature",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/nature.org.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://www.nature.org/about-us/governance/privacy-policy.xml",
+      "select": "body"
+    }
+  }
+}

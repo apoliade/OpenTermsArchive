@@ -1,0 +1,10 @@
+{
+  "name": "Iegallery",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/iegallery.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://www.microsoft.com/privacystatement/en-us/core/default.aspx",
+      "select": "div.div_content"
+    }
+  }
+}

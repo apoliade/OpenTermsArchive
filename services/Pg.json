@@ -1,0 +1,10 @@
+{
+  "name": "Pg",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/pg.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://www.pg.com/privacy/english/privacy_notice.shtml",
+      "select": "body"
+    }
+  }
+}

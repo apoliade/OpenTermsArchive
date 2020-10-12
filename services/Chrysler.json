@@ -1,0 +1,10 @@
+{
+  "name": "Chrysler",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/chrysler.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://www.chrysler.com/universal/privacy.html",
+      "select": "body"
+    }
+  }
+}

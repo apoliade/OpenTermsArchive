@@ -1,0 +1,10 @@
+{
+  "name": "Snapfish",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/1ec0816326d51c75aa6463888152ca603d45cdc1/rules/snapfish.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://www8.hp.com/us/en/privacy/privacy-iframe.html",
+      "select": "div#gateway_article_body"
+    }
+  }
+}
