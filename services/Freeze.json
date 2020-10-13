@@ -1,0 +1,10 @@
+{
+  "name": "Freeze",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/81b35e595bc7d2eff497dcfd01cb924f643877ce/rules/freeze.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://policy.freeze.com/PrivacyPolicy_Full.html",
+      "select": "body"
+    }
+  }
+}
