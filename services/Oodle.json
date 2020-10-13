@@ -1,0 +1,10 @@
+{
+  "name": "Oodle",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/81b35e595bc7d2eff497dcfd01cb924f643877ce/rules/oodle.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://www.oodle.com/info/privacy/",
+      "select": "body"
+    }
+  }
+}
