@@ -1,0 +1,10 @@
+{
+  "name": "Privacyscore",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/81b35e595bc7d2eff497dcfd01cb924f643877ce/rules/privacyscore.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://privacyscore.com/privacy",
+      "select": "body"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Meetup",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/81b35e595bc7d2eff497dcfd01cb924f643877ce/rules/meetup.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "https://www.meetup.com/privacy/",
+      "select": "div.policyDocument"
+    }
+  }
+}

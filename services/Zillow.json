@@ -1,0 +1,10 @@
+{
+  "name": "Zillow",
+  "importedFrom": "https://github.com/tosdr/tosback2/blob/81b35e595bc7d2eff497dcfd01cb924f643877ce/rules/zillow.com.xml",
+  "documents": {
+    "Privacy Policy": {
+      "fetch": "http://www.zillow.com/corp/Privacy.htm",
+      "select": "body"
+    }
+  }
+}
