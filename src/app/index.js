@@ -236,4 +236,35 @@ export default class CGUs extends events.EventEmitter {
     await history.publish();
     this.emit('recordsPublished');
   }
+
+  // test si charger tos les commits en mémoire
+  // si réécrire ça marche sans mettre 15 ans
+  /* eslint-disable */
+  async sortSnapshots() {
+    const commits = await history.getAllSnapshots();
+    const commitsSorted = commits.sort((a, b) => new Date(a.date) - new Date(b.date)).filter(commit => commit.message.includes('Update'));
+
+    let i = 0;
+    console.time('time');
+    for (const commit of commitsSorted) {
+      const { date: dateString, content, mimeType, relativeFilePath } = await history.getSnapshot(commit.hash);
+      await history.recordSnapshot2({
+        relativeFilePath,
+        content,
+        mimeType,
+        documentDate: new Date(dateString),
+        changelog: commit.message
+      });
+      i++;
+      if (i % 100 == 0) {
+        console.log(i);
+        console.timeLog('time');
+      }
+    }
+    // console.timeEnd('time');
+    // load all snapshots commits
+    // sort
+    // prendre le contenu du fichier et ion créer un nouveau commit
+    // recreate all commits one by one
+  }
 }

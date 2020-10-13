@@ -10,9 +10,11 @@ import Recorder from './recorder.js';
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 export const SNAPSHOTS_PATH = path.resolve(__dirname, '../../..', config.get('history.snapshotsPath'));
+export const SNAPSHOTS2_PATH = path.resolve(__dirname, '../../..', './data/snapshots2');
 export const VERSIONS_PATH = path.resolve(__dirname, '../../..', config.get('history.versionsPath'));
 
 const snapshotRecorder = new Recorder({ path: SNAPSHOTS_PATH, fileExtension: 'html' });
+const snapshot2Recorder = new Recorder({ path: SNAPSHOTS2_PATH, fileExtension: 'html' });
 const versionRecorder = new Recorder({ path: VERSIONS_PATH, fileExtension: 'md' });
 
 export async function recordSnapshot({ serviceId, documentType, content, mimeType }) {
@@ -30,6 +32,20 @@ export async function recordSnapshot({ serviceId, documentType, content, mimeTyp
   return {
     ...recordResult,
     isFirstRecord
+  };
+}
+
+export async function recordSnapshot2({ relativeFilePath, documentDate, changelog, content, mimeType }) {
+  const recordResult = await snapshot2Recorder.record({
+    relativeFilePath,
+    content,
+    documentDate,
+    changelog,
+    mimeType,
+  });
+
+  return {
+    ...recordResult,
   };
 }
 
@@ -82,4 +98,8 @@ export function getLatestSnapshot(serviceId, documentType) {
 
 export function getSnapshot(snapshotId) {
   return snapshotRecorder.getRecord(snapshotId);
+}
+
+export function getAllSnapshots() {
+  return snapshotRecorder.getAllRecords();
 }

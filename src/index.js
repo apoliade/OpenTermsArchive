@@ -15,7 +15,8 @@ let serviceIds = args.filter(arg => !arg.startsWith('--'));
   await app.init();
 
 
-  await app.rewriteVersion();
+  // await app.rewriteVersion();
+  await app.sortSnapshots();
   return;
   serviceIds = serviceIds.filter(serviceId => {
     const isServiceDeclared = app.serviceDeclarations[serviceId];

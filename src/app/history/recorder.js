@@ -4,6 +4,7 @@
 */
 
 import fsApi from 'fs';
+import path from 'path';
 
 import mime from 'mime';
 
@@ -18,9 +19,9 @@ export default class Recorder {
     this.git = new Git(this.path);
   }
 
-  async record({ serviceId, documentDate, documentType, content, changelog, mimeType }) {
+  async record({ serviceId, documentDate, documentType, content, changelog, mimeType, relativeFilePath }) {
     const fileExtension = mime.getExtension(mimeType);
-    const filePath = await this.save({ serviceId, documentType, content, fileExtension });
+    const filePath = await this.save({ serviceId, documentType, content, fileExtension, relativeFilePath });
     const sha = await this.commit(filePath, changelog, documentDate);
 
     return {
@@ -29,14 +30,14 @@ export default class Recorder {
     };
   }
 
-  async save({ serviceId, documentType, content, fileExtension }) {
-    const directory = `${this.path}/${serviceId}`;
+  async save({ serviceId, documentType, content, fileExtension, relativeFilePath }) {
+    const directory = `${this.path}/${relativeFilePath ? path.dirname(relativeFilePath) : serviceId}`;
 
     if (!await fileExists(directory)) {
       await fs.mkdir(directory, { recursive: true });
     }
 
-    const filePath = this.getPathFor(serviceId, documentType, fileExtension);
+    const filePath = `${this.path}/${relativeFilePath}` || this.getPathFor(serviceId, documentType, fileExtension);
 
     await fs.writeFile(filePath, content);
 
@@ -46,7 +47,6 @@ export default class Recorder {
   async commit(filePath, message, authorDate) {
     try {
       await this.git.add(filePath);
-      console.log('commit', authorDate);
       return await this.git.commit(filePath, message, authorDate);
     } catch (error) {
       throw new Error(`Could not commit ${filePath} with message "${message}" due to error: "${error}"`);
@@ -108,7 +108,12 @@ export default class Recorder {
       date: commit.date,
       content: await fs.readFile(recordFilePath, readFileOptions),
       mimeType,
+      relativeFilePath,
     };
+  }
+
+  async getAllRecords() {
+    return this.git.log([ '-n', '101' ]);
   }
 }
 

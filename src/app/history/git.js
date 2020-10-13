@@ -20,7 +20,6 @@ export default class Git {
   }
 
   async commit(filepath, message, date) {
-    console.log('git.commit', date);
     const summary = await this.git.commit(message, this.relativePath(filepath), {
       '--author': `${config.get('history.author').name} <${config.get('history.author').email}>`,
       '--date': date.toISOString()
