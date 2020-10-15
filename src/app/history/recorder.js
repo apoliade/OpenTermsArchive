@@ -22,9 +22,9 @@ export default class Recorder {
   async record({ serviceId, documentDate, documentType, content, changelog, mimeType, relativeFilePath }) {
     const fileExtension = mime.getExtension(mimeType);
 
-    console.time(`write file${relativeFilePath}`);
+    console.time(`write ${relativeFilePath}`);
     const filePath = await this.save({ serviceId, documentType, content, fileExtension, relativeFilePath });
-    console.timeEnd(`write file${relativeFilePath}`);
+    console.timeEnd(`write ${relativeFilePath}`);
 
     console.time(`commit ${relativeFilePath}`);
     const sha = await this.commit(filePath, changelog, documentDate);
