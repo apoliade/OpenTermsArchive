@@ -132,9 +132,9 @@ export default class Recorder {
       readFileOptions.encoding = 'utf8';
     }
 
-    console.time(`read file${hash}`);
+    console.time(`read ${hash}`);
     const content = await fs.readFile(recordFilePath, readFileOptions);
-    console.timeEnd(`read file${hash}`);
+    console.timeEnd(`read ${hash}`);
 
     return {
       id: hash,

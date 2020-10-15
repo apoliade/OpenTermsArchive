@@ -1,7 +1,7 @@
 {
   "serviceDeclarationsPath": "./services",
   "history": {
-    "snapshotsPath": "../cgus-snapshots",
+    "snapshotsPath": "./data/snapshots",
     "versionsPath": "./data/versions",
     "publish": false,
     "publicSnapshotsRepository": "https://github.com/ambanum/CGUs-snapshots.git",
