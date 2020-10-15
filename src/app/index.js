@@ -249,6 +249,7 @@ export default class CGUs extends events.EventEmitter {
 
     let i = 0;
     console.time('time');
+
     for (const commit of commitsSorted) {
       console.time(`time${i}`);
       const [ diffChanges ] = commit.diff.files;
@@ -265,7 +266,8 @@ export default class CGUs extends events.EventEmitter {
       i++;
       console.log(i);
     }
-    // console.timeEnd('time');
+
+    console.timeEnd('time');
     // load all snapshots commits
     // sort
     // prendre le contenu du fichier et ion créer un nouveau commit
