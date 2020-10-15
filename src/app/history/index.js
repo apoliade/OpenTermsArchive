@@ -100,6 +100,10 @@ export function getSnapshot(snapshotId) {
   return snapshotRecorder.getRecord(snapshotId);
 }
 
+export function getSnapshotOptimized({ hash, date, path }) {
+  return snapshotRecorder.getRecordOptimized({ hash, date, path });
+}
+
 export function getAllSnapshots() {
   return snapshotRecorder.getAllRecords();
 }

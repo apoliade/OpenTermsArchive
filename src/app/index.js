@@ -241,13 +241,19 @@ export default class CGUs extends events.EventEmitter {
   // si réécrire ça marche sans mettre 15 ans
   /* eslint-disable */
   async sortSnapshots() {
+    console.time('getAllSnapshots');
     const commits = await history.getAllSnapshots();
+    console.log('# commits', commits.length);
+    console.timeEnd('getAllSnapshots');
     const commitsSorted = commits.sort((a, b) => new Date(a.date) - new Date(b.date)).filter(commit => commit.message.includes('Update'));
 
     let i = 0;
     console.time('time');
     for (const commit of commitsSorted) {
-      const { date: dateString, content, mimeType, relativeFilePath } = await history.getSnapshot(commit.hash);
+      console.time(`time${i}`);
+      const [ diffChanges ] = commit.diff.files;
+      const relativeFilePath = diffChanges.file;
+      const { date: dateString, content, mimeType } = await history.getSnapshotOptimized({ hash: commit.hash, date: commit.date, path: relativeFilePath });
       await history.recordSnapshot2({
         relativeFilePath,
         content,
@@ -255,11 +261,9 @@ export default class CGUs extends events.EventEmitter {
         documentDate: new Date(dateString),
         changelog: commit.message
       });
+      console.timeEnd(`time${i}`);
       i++;
-      if (i % 100 == 0) {
-        console.log(i);
-        console.timeLog('time');
-      }
+      console.log(i);
     }
     // console.timeEnd('time');
     // load all snapshots commits
@@ -268,3 +272,11 @@ export default class CGUs extends events.EventEmitter {
     // recreate all commits one by one
   }
 }
+
+// git clone --depth 10 "file:///Users/ndpnt/Workspace/Ambanum/experimentations/test-checkout/" test-checkout6
+// N = 5000
+// git clone complet
+// je récupère le nombre total de commits et le du dernier commit
+// à partir du clone je créer un nouveau dossier btach-1
+// dedans je reset hard le Nième commit, je git gc
+// je git clone -depth totalCommit - N batch-i, je reset hard le i * Nième commit, je delete master, je git gc

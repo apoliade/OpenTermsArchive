@@ -21,8 +21,14 @@ export default class Recorder {
 
   async record({ serviceId, documentDate, documentType, content, changelog, mimeType, relativeFilePath }) {
     const fileExtension = mime.getExtension(mimeType);
+
+    console.time(`write file${relativeFilePath}`);
     const filePath = await this.save({ serviceId, documentType, content, fileExtension, relativeFilePath });
+    console.timeEnd(`write file${relativeFilePath}`);
+
+    console.time(`commit ${relativeFilePath}`);
     const sha = await this.commit(filePath, changelog, documentDate);
+    console.timeEnd(`commit ${relativeFilePath}`);
 
     return {
       path: filePath,
@@ -112,8 +118,35 @@ export default class Recorder {
     };
   }
 
+  async getRecordOptimized({ hash, date, path }) {
+    console.time(`checkout ${hash}`);
+    await this.git.checkout(hash);
+    console.timeEnd(`checkout ${hash}`);
+
+    const relativeFilePath = path;
+    const recordFilePath = `${this.path}/${relativeFilePath}`;
+    const mimeType = mime.getType(recordFilePath);
+
+    const readFileOptions = {};
+    if (mimeType.startsWith('text/')) {
+      readFileOptions.encoding = 'utf8';
+    }
+
+    console.time(`read file${hash}`);
+    const content = await fs.readFile(recordFilePath, readFileOptions);
+    console.timeEnd(`read file${hash}`);
+
+    return {
+      id: hash,
+      date,
+      content,
+      mimeType,
+      relativeFilePath,
+    };
+  }
+
   async getAllRecords() {
-    return this.git.log([ '-n', '101' ]);
+    return this.git.log([ '--stat=4096' ]);
   }
 }
 
