@@ -45,6 +45,7 @@ export default class Recorder {
 
   async commit(filePath, message) {
     try {
+      console.log('\nhasChanges', filePath, await this.git.hasChanges(filePath));
       if (!await this.git.hasChanges(filePath)) {
         return;
       }

@@ -42,13 +42,12 @@ export default class Git {
     }
   }
 
-  async hasChanges(filepath) {
+  async hasChanges(filePath) {
     const status = await this.git.status();
-    const relativePath = this.relativePath(filepath);
-    const escapedRelativePath = filepath.includes(' ') ? `"${relativePath}"` : relativePath;
-    return (status.modified.indexOf(escapedRelativePath) > -1)
-           || (status.not_added.indexOf(relativePath) > -1)
-           || (status.created.indexOf(relativePath) > -1);
+    const relativePath = this.relativePath(filePath);
+    return (status.modified.find(modifiedFilePath => modifiedFilePath.match(relativePath)))
+           || (status.not_added.find(notAddedFilePath => notAddedFilePath.match(relativePath)))
+           || (status.created.find(createdFilePath => createdFilePath.match(relativePath)));
   }
 
   async isTracked(filepath) {

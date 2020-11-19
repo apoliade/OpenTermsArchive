@@ -14,7 +14,7 @@ const FILE_CONTENT = 'ToS fixture data with UTF-8 çhãràčtęrs';
 const EXPECTED_FILE_PATH = `${SNAPSHOTS_PATH}/${SERVICE_PROVIDER_ID}/${TYPE}.html`;
 const EXPECTED_PDF_FILE_PATH = EXPECTED_FILE_PATH.replace('html', 'pdf');
 
-describe('Recorder', () => {
+describe.only('Recorder', () => {
   let subject;
 
   before(() => {
