@@ -1,0 +1,7 @@
+{
+  "Privacy Policy":
+    {
+      "fetch": "https://help.blackboard.com/Privacy_Statement",
+      "select": "body"
+    }
+}
